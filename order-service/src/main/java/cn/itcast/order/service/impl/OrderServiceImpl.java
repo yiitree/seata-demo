@@ -6,13 +6,11 @@ import cn.itcast.order.entity.Order;
 import cn.itcast.order.mapper.OrderMapper;
 import cn.itcast.order.service.OrderService;
 import feign.FeignException;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author 虎哥
- */
 @Slf4j
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -28,8 +26,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @Transactional
-//    @GlobalTransactional // 标记为全局事务
+    @GlobalTransactional // 标记为全局事务,事务发起者要使用这个
     public Long create(Order order) {
         // 创建订单
         orderMapper.insert(order);

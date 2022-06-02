@@ -7,18 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author 虎哥
- */
 @Slf4j
 @Service
 public class AccountServiceImpl implements AccountService {
 
-    private final AccountMapper accountMapper;
-
-    public AccountServiceImpl(AccountMapper accountMapper) {
-        this.accountMapper = accountMapper;
-    }
+    @Autowired
+    private AccountMapper accountMapper;
 
     @Override
     @Transactional
